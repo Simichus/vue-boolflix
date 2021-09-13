@@ -1,43 +1,42 @@
 <template>
   <section>
-      <h1>{{resultType}}</h1>
+      <h1>{{title}}</h1>
+      <div>
+          <Card  v-for="result in resultArray" :key="result.id" :result="result"/>
+      </div>
   </section>
 </template>
 
 <script>
-// import axios from 'axios'
+import Card from '@/components/Card.vue'
 export default {
-name:'ShowResult',
-props:['resultType', 'searchTerm'],
-data(){
-    return{
-       baseURI:'https://api.themoviedb.org/3/',
-       apiKey:'94e21c35f1a4303de4bd1504d52ad385'
-    }
-},
-computed:{
-    // results(){
-    //     let results = [];
-    //     axios.get(`https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=scrubs`).then(res => {
-    //      results = [...res.data];
-    //     })  
-    //     return results
-    // },
-    type(){
-        if (this.resultType === 'movies') return 'search/movie/';
-        if (this.resultType === 'tv series') return 'search/tv/';
-        else return ''
-    }
-},
-methods:{
+    components:{
+        Card
+    },
+    name:'ShowResult',
+    props:['resultArray', 'title'],
     
-}
-
 }
 </script>
 
 <style scoped lang="scss">
-h1{
-    text-transform: uppercase;
+@import '../scss/_vars.scss';
+
+
+section{
+
+    h1{
+        color: $main-text-color;
+        text-align: center;
+        font-size: 40px;
+        text-transform: uppercase;
+        margin-top: 25px;
+    }
+
+    div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 </style>

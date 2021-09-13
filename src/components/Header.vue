@@ -1,15 +1,16 @@
 <template>
   <header>
-      <SearchMovie @startResearch="startResearch"/>
+      <h1>Boolflix</h1>
+      <Search @startResearch="startResearch"/>
   </header>
 </template>
 
 <script>
-import SearchMovie from '@/components/SearchMovie.vue'
+import Search from '@/components/Search.vue'
 export default {
 name: 'Header',
 components:{
-    SearchMovie
+    Search
 },
 methods:{
     startResearch(searchTerm){
@@ -19,6 +20,18 @@ methods:{
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+@import '../scss/_vars.scss';
 
+header{
+    display: flex;
+    background-color: $secondary-color;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+
+    h1{
+        color:$main-text-color
+    }
+}
 </style>
